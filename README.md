@@ -3,19 +3,29 @@
 This project is an example to configuration between docker, rails and
 guard-livereload.
 
-## Using
+## Using in development mode
 ```Linux
 # Build project :
-docker-compose build
+docker-compose -f docker-compose.yml -f docker-compose.development.yml build
 
 # Launch project :
-docker-compose up
+docker-compose -f docker-compose.yml -f docker-compose.development.yml up
+```
 
+## Using in production mode
+```Linux
+# Build project :
+docker-compose -f docker-compose.yml -f docker-compose.production.yml build
+
+# Launch project :
+docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d
+```
+
+## Tips
+```
 # Use Rails Console :
 docker-compose run web rails c
 ```
 
 ## to do
-Prepare mode for development and production :
-* Development mode using guard-livereload
-* Production mode don't use guard-livereload
+* nothing :p
