@@ -1,0 +1,16 @@
+livereload:
+  image: ocasta/livereload
+  ports:
+    - "35729:35729"
+  volumes:
+    - ./app:/usr/src/livereload-watch
+
+web:
+  build: .
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/docker-live-reload
+  ports:
+    - "3000:3000"
+  links:
+    - livereload

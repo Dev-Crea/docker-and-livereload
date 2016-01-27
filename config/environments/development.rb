@@ -38,4 +38,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Configure guard-livereload with rack
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  config.middleware.use(Rack::LiveReload,
+                         :min_delay        => 500,    # default 1000
+                         :max_delay        => 10_000, # default 60_000
+                         :live_reload_port => 56789,  # default 35729
+                         :host             => 'livereload',
+                         :ignore           => [ %r{dont/modify\.html$}  ]
+                       )
 end
