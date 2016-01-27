@@ -10,7 +10,11 @@ docker-compose build
 
 # Launch project :
 docker-compose up
+
+# Use Rails Console :
+docker-compose run web rails c
 ```
+
 ## to do
 Prepare mode for development and production :
 * Development mode using guard-livereload
