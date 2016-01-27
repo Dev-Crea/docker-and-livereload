@@ -1,0 +1,14 @@
+livereload:
+  image: ocasta/livereload
+  ports:
+    - "35729:35729"
+  volumes:
+    - ./app:/usr/src/livereload-watch
+
+web:
+  volumes:
+    - .:/docker-live-reload
+  ports:
+    - "3000:3000"
+  links:
+    - livereload

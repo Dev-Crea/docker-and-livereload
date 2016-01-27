@@ -1,0 +1,5 @@
+web:
+  restart: always
+  environment:
+    RACK_ENV: production
+    RAILS_SERVE_STATIC_FILES: "false"
