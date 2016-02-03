@@ -27,5 +27,11 @@ docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d
 docker-compose run web rails c
 ```
 
-## to do
-* nothing :p
+## Use script work
+```Linux
+# Use script for development ENV
+sh work.sh -e development
+
+# Use script for production ENV
+sh work.sh -e production
+```
