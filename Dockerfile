@@ -1,6 +1,9 @@
 # Image base
 FROM ruby:slim
 
+# Contact for maintainer project user
+Maintainer "VAILLANT Jérémy" <vaillant.jeremy@dev-crea.com>
+
 # Minim dependencies system
 RUN apt-get update -qq && \
     apt-get install -y build-essential sqlite libsqlite3-dev
