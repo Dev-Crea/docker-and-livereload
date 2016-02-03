@@ -67,6 +67,9 @@ prepare() {
       echo $ROUGE "Copie du dockerignore correspondant a l'environment" $NORMAL
       cp .dockerignore.$MODE .dockerignore
     fi
+
+    echo $ROUGE "Delete pids file" $NORMAL
+    rm tmp/pids/server.pid
   else
     error
   fi
@@ -106,6 +109,8 @@ up() {
     $COMP up -d
     echo $JAUNE "$COMP run web rake assets:precompile" $NORMAL
     $COMP run web rake assets:precompile
+    echo $JAUNE "$COMP run web rake bower:install" $NORMAL
+    $COMP run web rake bower:install
     echo $JAUNE "$COMP restart web" $NORMAL
     $COMP restart web
   fi
