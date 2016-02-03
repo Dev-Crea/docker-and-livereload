@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 
-# Ignore docker file generic
+# Ignore docker files generic
 Dockerfile
+.dockerignore
