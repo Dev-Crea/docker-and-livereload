@@ -21,7 +21,7 @@ ADD Gemfile /$PROJECT/Gemfile
 ADD Gemfile.lock /$PROJECT/Gemfile.lock
 
 # Execute gem install
-RUN bundle install
+RUN bundle install --without development test doc
 
 # Add project to container
 ADD . /$PROJECT
