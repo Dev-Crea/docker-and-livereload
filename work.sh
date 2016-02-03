@@ -6,8 +6,7 @@
 
 ## Variable script
 # Command default for each docker-compose command
-MODE="development"
-COMP="docker-compose -f docker-compose.yml -f docker-compose.$MODE.yml "
+MODE=""
 VERS="0.1"
 # Couleurs
 VERT="\\033[1;32m"
@@ -54,6 +53,7 @@ version() {
 
 # Environment select
 prepare() {
+  echo $ROUGE "### PREPARE ###" $NORMAL
   MODE=$1
   if [ "$MODE" = "development" ] || [ "$MODE" = "production" ]; then
     echo $ROUGE "Preparation de l'environement : $MODE" $NORMAL
@@ -74,6 +74,8 @@ prepare() {
 
 # Build image
 build() {
+  COMP="docker-compose -f docker-compose.yml -f docker-compose.$MODE.yml "
+  echo $VERT "### BUILD ###" $NORMAL
   echo $VERT "BUILD image env $MODE" $NORMAL
 
   if [ "$MODE" = "development" ]; then
@@ -83,7 +85,7 @@ build() {
     $COMP build --force-rm --no-cache
   fi
 
-  if [ "$1" = "production" ]; then
+  if [ "$MODE" = "production" ]; then
     echo $VERT "$COMP build" $NORMAL
     $COMP build
   fi
@@ -91,6 +93,8 @@ build() {
 
 # Create container
 up() {
+  COMP="docker-compose -f docker-compose.yml -f docker-compose.$MODE.yml "
+  echo $JAUNE "### UP ###" $NORMAL
   echo $JAUNE "UP container env $MODE" $NORMAL
   if [ "$MODE" = "development" ]; then
     echo $JAUNE "$COMP up" $NORMAL
