@@ -64,6 +64,7 @@ prepare() {
     echo $ROUGE "Copie du Dockerfile correspondant a l'environment" $NORMAL
     cp Dockerfile.$MODE Dockerfile
     if [ -e ".dockerignore.$MODE" ]; then
+      echo $ROUGE "Copie du dockerignore correspondant a l'environment" $NORMAL
       cp .dockerignore.$MODE .dockerignore
     fi
   else
@@ -78,10 +79,12 @@ build() {
   if [ "$MODE" = "development" ]; then
     $COMP stop
     $COMP rm -fv
+    echo $VERT "$COMP build --force-rm --no-cache" $NORMAL
     $COMP build --force-rm --no-cache
   fi
 
   if [ "$1" = "production" ]; then
+    echo $VERT "$COMP build" $NORMAL
     $COMP build
   fi
 }
@@ -90,12 +93,16 @@ build() {
 up() {
   echo $JAUNE "UP container env $MODE" $NORMAL
   if [ "$MODE" = "development" ]; then
+    echo $JAUNE "$COMP up" $NORMAL
     $COMP up
   fi
 
-  if [ "$1" = "production" ]; then
+  if [ "$MODE" = "production" ]; then
+    echo $JAUNE "$COMP up -d" $NORMAL
     $COMP up -d
+    echo $JAUNE "$COMP run web rake assets:precompile" $NORMAL
     $COMP run web rake assets:precompile
+    echo $JAUNE "$COMP restart web" $NORMAL
     $COMP restart web
   fi
 }
