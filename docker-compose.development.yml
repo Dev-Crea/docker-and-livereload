@@ -6,9 +6,7 @@ livereload:
     - ./app:/usr/src/livereload-watch
 
 web:
-  volumes:
-    - .:/docker-live-reload
   ports:
-    - "3000:3000"
+    - "80:3000"
   links:
     - livereload
