@@ -19,3 +19,6 @@
 # Ignore docker files generic
 Dockerfile
 .dockerignore
+
+# Ignore asset compile (used for production)
+public/assets/
