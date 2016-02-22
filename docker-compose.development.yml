@@ -1,14 +1,18 @@
-livereload:
-  image: devcrea/livereload
-  ports:
-    - "35729:35729"
-  volumes:
-    - ./app:/usr/src/livereload-watch
+version: '2'
 
-web:
-  build: .
-  dockerfile: Dockerfile.development
-  ports:
-    - "80:3000"
-  links:
-    - livereload
+services:
+  livereload:
+    image: devcrea/livereload
+    ports:
+      - "35729:35729"
+    volumes:
+      - ./app:/usr/src/livereload-watch
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    ports:
+      - "80:3000"
+    links:
+      - livereload
