@@ -1,5 +1,5 @@
 livereload:
-  image: ocasta/livereload
+  image: devcrea/livereload
   ports:
     - "35729:35729"
   volumes:
