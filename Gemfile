@@ -31,6 +31,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Haml (HTML Abstraction Markup Language) is a layer on top of HTML or XML
+# that's designed to express the structure of documents in a non-repetitive,
+# elegant, and easy way by using indentation rather than closing tags and
+# allowing Ruby to be embedded with ease. It was originally envisioned as a
+# plugin for Ruby on Rails, but it can function as a stand-alone templating
+# engine.
+gem 'haml', '~> 4.0', '>= 4.0.7'
+
+# Haml-rails provides Haml generators for Rails 4. It also enables Haml as the
+# templating engine for you, so you don't have to screw around in your own
+# application.rb when your Gemfile already clearly indicated what templating
+# engine you have installed. Hurrah.
+gem 'haml-rails', '~> 0.9.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
