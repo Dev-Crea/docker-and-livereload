@@ -1,4 +1,6 @@
 web:
+  build: .
+  dockerfile: Dockerfile.production
   restart: always
   environment:
     RACK_ENV: production
